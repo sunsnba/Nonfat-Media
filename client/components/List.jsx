@@ -1,29 +1,21 @@
 import React, { Component } from "react";
 
-const List = props => {
-  const listItems = props.items.map(d => (
-    <li key={d.added}>
-      added: {d.added}
-      <br />
-      title: {d.title}
-      <br />
-      type: {d.type}
-      <br />
-      casting director: {d.castingDirector}
-      <br />
-      start date: {d.startDate}
-      <br />
-      I'm interested
-      <input type="checkbox" />
-    </li>
-  ));
+class List extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-  return (
-    <ul>
-      {listItems}
-      <br />
-    </ul>
-  );
-};
-
+  render() {
+    return (
+      <div>
+        {Object.keys(this.props.items[0]).map(key => (
+          <li key={key}>
+            {" "}
+            {key}: {this.props.items[0][key]}
+          </li>
+        ))}
+      </div>
+    );
+  }
+}
 export default List;
