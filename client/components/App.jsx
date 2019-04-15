@@ -15,8 +15,8 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <div style={{ textAlign: "center" }}>
-        <h1>Hello World</h1>
+      <div>
+        <h1>Breakdowns</h1>
         <List items={this.state.items} />
       </div>
     );
