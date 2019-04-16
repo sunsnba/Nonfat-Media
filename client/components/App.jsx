@@ -2,9 +2,7 @@ import React from "react";
 import sortedData from "./sortedData.jsx";
 import List from "./List.jsx";
 
-console.log(sortedData);
-
-export default class App extends React.Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,3 +20,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;
