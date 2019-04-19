@@ -14,10 +14,11 @@ const List = props => {
         <br />
         startDate: {listItem.startDate + " "}
         <br />
-        I'm interested <input type="checkbox" />
+        I'm interested <input type="checkbox" id={i} />
+        <br />
       </li>
     );
   });
-  return <ul>{listItems}</ul>;
+  return <ul>{listItems} </ul>;
 };
 export default List;
