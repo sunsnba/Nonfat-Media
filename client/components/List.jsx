@@ -14,7 +14,14 @@ const List = props => {
         <br />
         startDate: {listItem.startDate + " "}
         <br />
-        I'm interested <input type="checkbox" id={i} />
+        I'm interested{" "}
+        <input
+          type="checkbox"
+          id={i}
+          checked="false"
+          onChange={this.props.save(e)}
+          onChange={this.props.load(e)}
+        />
         <br />
       </li>
     );

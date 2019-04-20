@@ -10,18 +10,29 @@ class App extends React.Component {
       items: sortedData
     };
     this.save = this.save.bind(this);
+    this.load = this.load.bind(this);
   }
 
-  save() {
-    var checkbox = document.getElementById("1");
-    localStorage.setItem("1", checkbox.checked);
+  componentDidMount() {
+    const rememberMe = localStorage.getItem(rememberMe) === "true";
+    this.setState({ rememberMe });
+  }
+
+  save(id) {
+    var checkbox = document.getElementById(id);
+    localStorage.setItem(id, checkbox.checked);
+  }
+
+  load(id) {
+    var checked = JSON.parse(localStorage.getItem(id));
+    document.getElementById(id).checked = checked;
   }
 
   render() {
     return (
       <div>
         <h1>Breakdowns</h1>
-        <List items={this.state.items} save={this.save} />
+        <List items={this.state.items} save={this.save} load={this.load} />
       </div>
     );
   }
