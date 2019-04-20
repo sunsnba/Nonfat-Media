@@ -1,5 +1,4 @@
 import React from "react";
-import sortedData from "./sortedData.jsx";
 import List from "./List.jsx";
 
 class App extends React.Component {
@@ -7,32 +6,52 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      items: sortedData
+      itemChecked: {}
     };
-    this.save = this.save.bind(this);
-    this.load = this.load.bind(this);
+
+    this.checkItem = this.checkItem.bind(this);
   }
 
   componentDidMount() {
-    const rememberMe = localStorage.getItem(rememberMe) === "true";
-    this.setState({ rememberMe });
+    this.hydrateStateWithLocalStorage();
   }
 
-  save(id) {
-    var checkbox = document.getElementById(id);
-    localStorage.setItem(id, checkbox.checked);
+  checkItem(listItem, e) {
+    let itemChecked = this.state.itemChecked;
+    itemChecked[listItem] = e.target.checked;
+    console.log(listItem);
+    console.log(itemChecked[listItem]);
+    // console.log("e.taget.checked", e.target.checked, e.target, "e.target");
+    //console.log("this.state.itemChecked", this.state);
+    localStorage.setItem(e.target.id, JSON.stringify(itemChecked));
+    this.setState({ itemChecked: itemChecked });
   }
 
-  load(id) {
-    var checked = JSON.parse(localStorage.getItem(id));
-    document.getElementById(id).checked = checked;
+  hydrateStateWithLocalStorage() {
+    // for all items in state
+    for (let key in this.state.itemChecked) {
+      // if the key exists in localStorage
+      if (localStorage.hasOwnProperty(key)) {
+        // get the key's value from localStorage
+        let value = localStorage.getItem(key);
+
+        // parse the localStorage string and setState
+        try {
+          value = JSON.parse(value);
+          this.setState({ [key]: value });
+        } catch (e) {
+          // handle empty string
+          this.setState({ [key]: value });
+        }
+      }
+    }
   }
 
   render() {
     return (
       <div>
         <h1>Breakdowns</h1>
-        <List items={this.state.items} save={this.save} load={this.load} />
+        <List items={this.state.items} checkItem={this.checkItem} />
       </div>
     );
   }

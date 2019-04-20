@@ -1,7 +1,8 @@
 import React from "react";
+import sortedData from "./sortedData.jsx";
 
 const List = props => {
-  const listItems = props.items.map((listItem, i) => {
+  const listItems = sortedData.map((listItem, i) => {
     return (
       <li key={i}>
         added: {listItem.added + " "}
@@ -18,9 +19,7 @@ const List = props => {
         <input
           type="checkbox"
           id={i}
-          checked="false"
-          onChange={this.props.save(e)}
-          onChange={this.props.load(e)}
+          onChange={e => props.checkItem(listItem, e)}
         />
         <br />
       </li>
@@ -28,4 +27,5 @@ const List = props => {
   });
   return <ul>{listItems} </ul>;
 };
+
 export default List;
