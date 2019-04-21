@@ -7,6 +7,7 @@ class App extends React.Component {
 
     this.state = {
       itemChecked: {}
+      // breakdowns: [];
     };
 
     this.checkItem = this.checkItem.bind(this);
@@ -15,6 +16,13 @@ class App extends React.Component {
   componentDidMount() {
     this.hydrateStateWithLocalStorage();
   }
+
+  // updateList () {
+  //   const copy = this.state.familyMembers.slice();
+  //   copy.push({
+  //     interested:
+  //   })
+  // }
 
   checkItem(listItem, e) {
     let itemChecked = this.state.itemChecked;
