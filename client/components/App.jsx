@@ -6,60 +6,48 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      itemChecked: {}
-      // breakdowns: [];
+      itemInterest: {
+        0: "",
+        1: "",
+        2: "",
+        3: "",
+        4: ""
+      }
     };
 
-    this.checkItem = this.checkItem.bind(this);
+    this.interestChange = this.interestChange.bind(this);
   }
 
   componentDidMount() {
     this.hydrateStateWithLocalStorage();
   }
 
-  // updateList () {
-  //   const copy = this.state.familyMembers.slice();
-  //   copy.push({
-  //     interested:
-  //   })
-  // }
-
-  checkItem(listItem, e) {
-    let itemChecked = this.state.itemChecked;
-    itemChecked[listItem] = e.target.checked;
-    console.log(listItem);
-    console.log(itemChecked[listItem]);
-    // console.log("e.taget.checked", e.target.checked, e.target, "e.target");
-    //console.log("this.state.itemChecked", this.state);
-    localStorage.setItem(e.target.id, JSON.stringify(itemChecked));
-    this.setState({ itemChecked: itemChecked });
+  interestChange(e) {
+    let itemInterest = this.state.itemInterest;
+    console.log(e.target.checked);
+    itemInterest[e.target.id] = e.target.checked;
+    this.setState({
+      itemInterest: itemInterest
+    });
+    localStorage.setItem("itemInterest", JSON.stringify(itemInterest));
   }
 
   hydrateStateWithLocalStorage() {
-    // for all items in state
-    for (let key in this.state.itemChecked) {
-      // if the key exists in localStorage
-      if (localStorage.hasOwnProperty(key)) {
-        // get the key's value from localStorage
-        let value = localStorage.getItem(key);
-
-        // parse the localStorage string and setState
-        try {
-          value = JSON.parse(value);
-          this.setState({ [key]: value });
-        } catch (e) {
-          // handle empty string
-          this.setState({ [key]: value });
-        }
-      }
-    }
+    // get the key's value from localStorage
+    let value = localStorage.getItem("itemInterest");
+    console.log(JSON.parse(value));
+    let parsedVal = JSON.parse(value);
+    this.setState({ itemInterest: parsedVal });
   }
 
   render() {
     return (
       <div>
         <h1>Breakdowns</h1>
-        <List items={this.state.items} checkItem={this.checkItem} />
+        <List
+          itemInterest={this.state.itemInterest}
+          interestChange={this.interestChange}
+        />
       </div>
     );
   }
