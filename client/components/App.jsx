@@ -33,7 +33,6 @@ class App extends React.Component {
   }
 
   hydrateStateWithLocalStorage() {
-    // get the key's value from localStorage
     let value = localStorage.getItem("itemInterest");
     console.log(JSON.parse(value));
     let parsedVal = JSON.parse(value);
