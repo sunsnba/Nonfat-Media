@@ -5,17 +5,21 @@ const List = props => {
   const listItems = sortedData.map((listItem, i) => {
     return (
       <ul key={i} className="list">
-        added: {listItem.added + " "}
+        <strong> added: </strong>
+        {listItem.added + " "}
         <br />
-        title: {listItem.title + " "}
+        <strong> title: </strong>
+        {listItem.title + " "}
         <br />
-        type: {listItem.type + " "}
+        <strong> type: </strong>
+        {listItem.type + " "}
         <br />
-        castingDirector: {listItem.castingDirector + " "}
+        <strong> castingDirector: </strong>
+        {listItem.castingDirector + " "}
         <br />
-        startDate: {listItem.startDate + " "}
+        <strong> startDate: </strong> {listItem.startDate + " "}
         <br />
-        I'm interested{" "}
+        <strong> I'm interested </strong>{" "}
         <input
           type="checkbox"
           id={i}
