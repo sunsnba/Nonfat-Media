@@ -1,0 +1,15 @@
+.container {
+  width: 75%;
+  margin: auto;
+}
+
+.header {
+  font-size: 4vw;
+  text-align: center;
+}
+
+.list {
+  padding: 1%;
+  border: 0.3vw solid black;
+  font-size: 1.3vw;
+}
