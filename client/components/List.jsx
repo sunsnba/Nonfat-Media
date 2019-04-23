@@ -4,7 +4,7 @@ import sortedData from "./sortedData.jsx";
 const List = props => {
   const listItems = sortedData.map((listItem, i) => {
     return (
-      <li key={i}>
+      <ul key={i} className="list">
         added: {listItem.added + " "}
         <br />
         title: {listItem.title + " "}
@@ -25,7 +25,7 @@ const List = props => {
           }}
         />
         <br />
-      </li>
+      </ul>
     );
   });
   return <ul>{listItems} </ul>;

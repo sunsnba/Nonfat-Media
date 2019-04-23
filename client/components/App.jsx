@@ -1,5 +1,6 @@
 import React from "react";
 import List from "./List.jsx";
+import "../style.css";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,7 +25,6 @@ class App extends React.Component {
 
   interestChange(e) {
     let itemInterest = this.state.itemInterest;
-    console.log(e.target.checked);
     itemInterest[e.target.id] = e.target.checked;
     this.setState({
       itemInterest: itemInterest
@@ -34,15 +34,14 @@ class App extends React.Component {
 
   hydrateStateWithLocalStorage() {
     let value = localStorage.getItem("itemInterest");
-    console.log(JSON.parse(value));
     let parsedVal = JSON.parse(value);
     this.setState({ itemInterest: parsedVal });
   }
 
   render() {
     return (
-      <div>
-        <h1>Breakdowns</h1>
+      <div className="container">
+        <h1 className="header">Nonfat Media Breakdowns</h1>
         <List
           itemInterest={this.state.itemInterest}
           interestChange={this.interestChange}
