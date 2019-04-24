@@ -25,6 +25,7 @@ class App extends React.Component {
 
   interestChange(e) {
     let itemInterest = this.state.itemInterest;
+    // setting value at given index to true/false depending on checked value
     itemInterest[e.target.id] = e.target.checked;
     this.setState({
       itemInterest: itemInterest

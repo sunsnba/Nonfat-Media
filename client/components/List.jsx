@@ -1,10 +1,11 @@
 import React from "react";
 import sortedData from "./sortedData.jsx";
+// used title for key since index is an anti pattern - just need a string that uniquley identifies key amongst siblings
 
 const List = props => {
   const listItems = sortedData.map((listItem, i) => {
     return (
-      <ul key={i} className="list">
+      <ul key={listItem.title} className="list">
         <strong> added: </strong>
         {listItem.added + " "}
         <br />
